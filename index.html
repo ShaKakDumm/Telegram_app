@@ -71,7 +71,12 @@
     <script>
         // Функция для отправки выбранного статуса боту
         function selectStatus(status) {
-            const data = { action: "set_status", status: status };
+            const data = {
+                action: "set_status",
+                status: status,
+                user_id: Telegram.WebApp.initDataUnsafe.user.id, // ID пользователя
+                username: Telegram.WebApp.initDataUnsafe.user.username // Имя пользователя
+            };
             Telegram.WebApp.sendData(JSON.stringify(data)); // Отправляем данные в бот
             alert("Статус отправлен: " + status);
         }
